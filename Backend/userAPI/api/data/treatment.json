@@ -1,0 +1,160 @@
+{
+  "late_blight": {
+    "very_low": {
+      "weather_condition": "Dry weather, humidity below 70%, little or no rainfall",
+      "treatment": [
+        "Continue routine field monitoring.",
+        "Use certified disease-free seed tubers.",
+        "Remove volunteer potato plants and cull piles.",
+        "Maintain proper field sanitation."
+      ]
+    },
+    "low": {
+      "weather_condition": "Humidity 70-80%, occasional cloud cover",
+      "treatment": [
+        "Inspect fields twice per week.",
+        "Ensure proper earthing up and hilling.",
+        "Maintain adequate spacing between plants.",
+        "Destroy infected plant debris."
+      ]
+    },
+    "moderate": {
+      "weather_condition": "Humidity above 80%, cloudy weather, light rainfall",
+      "treatment": [
+        "Begin preventive fungicide sprays.",
+        "Apply Mancozeb (500-700 g/acre) or Chlorothalonil (500-700 g/acre).",
+        "Repeat spray every 7 days.",
+        "Monitor nearby fields for disease outbreaks."
+      ]
+    },
+    "high": {
+      "weather_condition": "High humidity (>85%), frequent rainfall, cloudy conditions",
+      "treatment": [
+        "Apply systemic fungicides immediately.",
+        "Use Ridomil Gold @ 700 g/acre.",
+        "Alternative products: Curzate M-8, Sectin, Revus, Equation Pro.",
+        "Repeat application after 10 days.",
+        "Remove severely infected foliage."
+      ]
+    },
+    "critical": {
+      "weather_condition": "Continuous rain, dense fog, humidity above 90%",
+      "treatment": [
+        "Treat as epidemic risk.",
+        "Apply Ridomil Gold, Curzate M-8, Revus, or Equation Pro immediately.",
+        "Destroy heavily infected plants.",
+        "Coordinate fungicide application with neighboring farmers.",
+        "Delay irrigation until foliage dries."
+      ]
+    },
+    "preventive_measures": [
+      "Use certified disease-free seed.",
+      "Destroy infected tubers and cull piles.",
+      "Practice crop sanitation.",
+      "Maintain proper row spacing.",
+      "Cut infected foliage 2-3 weeks before harvest.",
+      "Avoid planting highly susceptible varieties."
+    ],
+    "resistant_varieties": [
+      "Kufri Jyoti",
+      "Kufri Sutluj",
+      "Kufri Badshah",
+      "Kufri Chipsona-1",
+      "Kufri Chipsona-2"
+    ]
+  },
+
+  "early_blight": {
+    "very_low": {
+      "weather_condition": "Cool and dry conditions",
+      "treatment": [
+        "Continue regular crop monitoring.",
+        "Maintain balanced nutrition, especially nitrogen.",
+        "Remove weeds and volunteer host plants."
+      ]
+    },
+    "low": {
+      "weather_condition": "Moderate temperature with low humidity",
+      "treatment": [
+        "Inspect plants weekly.",
+        "Practice crop rotation.",
+        "Use certified disease-free seed."
+      ]
+    },
+    "moderate": {
+      "weather_condition": "Temperature 20-30°C with moderate humidity",
+      "treatment": [
+        "Increase scouting frequency.",
+        "Reduce leaf wetness duration.",
+        "Apply preventive fungicides if symptoms appear."
+      ]
+    },
+    "high": {
+      "weather_condition": "Warm temperatures with high humidity",
+      "treatment": [
+        "Begin foliar fungicide program.",
+        "Apply Fluopyram-based fungicides such as Luna Pro or Luna Tranquility.",
+        "Monitor disease progression every 3-4 days."
+      ]
+    },
+    "critical": {
+      "weather_condition": "Extended warm and humid conditions with visible symptoms",
+      "treatment": [
+        "Apply systemic foliar fungicides immediately.",
+        "Remove severely infected foliage.",
+        "Reduce plant stress through proper irrigation and nutrition.",
+        "Continue fungicide schedule as recommended."
+      ]
+    },
+    "preventive_measures": [
+      "Crop rotation for 2-3 years.",
+      "Remove infected crop debris.",
+      "Control nightshade and horsenettle weeds.",
+      "Use certified disease-free seed.",
+      "Avoid prolonged leaf wetness.",
+      "Maintain proper plant nutrition."
+    ]
+  },
+
+  "healthy": {
+    "very_low": {
+      "message": "Weather conditions are favorable. No disease risk detected.",
+      "recommendation": [
+        "Continue normal crop management.",
+        "Monitor field weekly."
+      ]
+    },
+    "low": {
+      "message": "Minor environmental stress may occur.",
+      "recommendation": [
+        "Maintain proper irrigation.",
+        "Ensure balanced fertilizer application."
+      ]
+    },
+    "moderate": {
+      "message": "Conditions could become favorable for disease development.",
+      "recommendation": [
+        "Increase field monitoring.",
+        "Check leaves for early symptoms.",
+        "Improve air circulation through proper spacing."
+      ]
+    },
+    "high": {
+      "message": "Weather conditions favor disease development.",
+      "recommendation": [
+        "Start preventive fungicide program.",
+        "Inspect crop daily.",
+        "Avoid overhead irrigation."
+      ]
+    },
+    "critical": {
+      "message": "Very favorable conditions for disease outbreak.",
+      "recommendation": [
+        "Apply preventive fungicides.",
+        "Monitor weather forecasts closely.",
+        "Inspect plants every day for symptoms.",
+        "Remove suspicious infected plants immediately."
+      ]
+    }
+  }
+}

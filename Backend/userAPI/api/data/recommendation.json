@@ -1,0 +1,119 @@
+{
+  "Healthy": {
+    "low_risk": {
+      "message": "Plant is healthy and weather conditions are favorable.",
+      "actions": [
+        "Continue regular monitoring.",
+        "Maintain balanced fertilization.",
+        "Follow normal irrigation schedule."
+      ]
+    },
+
+    "moderate_risk": {
+      "message": "Plant is healthy but weather may favor disease development.",
+      "actions": [
+        "Increase field scouting frequency.",
+        "Avoid excess irrigation.",
+        "Monitor humidity levels."
+      ]
+    },
+
+    "high_risk": {
+      "message": "Plant is healthy but weather is highly favorable for disease outbreak.",
+      "actions": [
+        "Inspect field daily.",
+        "Remove suspicious leaves immediately.",
+        "Consider preventive fungicide spray."
+      ]
+    }
+  },
+
+  "Early Blight": {
+    "low_risk": {
+      "message": "Early Blight detected but weather conditions are not favorable for rapid spread.",
+      "actions": [
+        "Remove infected leaves.",
+        "Maintain field sanitation.",
+        "Monitor disease progression."
+      ],
+      "recommended_fungicides": [
+        "Mancozeb",
+        "Chlorothalonil"
+      ]
+    },
+
+    "moderate_risk": {
+      "message": "Moderate risk of Early Blight spread.",
+      "actions": [
+        "Apply preventive fungicide.",
+        "Increase scouting frequency.",
+        "Improve air circulation."
+      ],
+      "recommended_fungicides": [
+        "Luna Pro",
+        "Luna Tranquility",
+        "Mancozeb"
+      ]
+    },
+
+    "high_risk": {
+      "message": "Weather conditions strongly favor Early Blight spread.",
+      "actions": [
+        "Apply fungicide immediately.",
+        "Remove severely infected foliage.",
+        "Inspect neighboring plants."
+      ],
+      "recommended_fungicides": [
+        "Luna Pro",
+        "Luna Tranquility",
+        "Velum Rise"
+      ]
+    }
+  },
+
+  "Late Blight": {
+    "low_risk": {
+      "message": "Late Blight detected but current weather risk is low.",
+      "actions": [
+        "Monitor disease progression.",
+        "Maintain proper sanitation.",
+        "Use disease-free seed for future planting."
+      ],
+      "recommended_fungicides": [
+        "Mancozeb",
+        "Chlorothalonil"
+      ]
+    },
+
+    "moderate_risk": {
+      "message": "Weather conditions can support Late Blight development.",
+      "actions": [
+        "Increase field inspections.",
+        "Apply preventive fungicides.",
+        "Avoid overhead irrigation."
+      ],
+      "recommended_fungicides": [
+        "Mancozeb",
+        "Kavach",
+        "Antracol"
+      ]
+    },
+
+    "high_risk": {
+      "message": "Weather conditions are highly favorable for Late Blight spread.",
+      "actions": [
+        "Apply systemic fungicide immediately.",
+        "Inspect field daily.",
+        "Remove severely infected plants.",
+        "Coordinate spraying with nearby farms."
+      ],
+      "recommended_fungicides": [
+        "Ridomil Gold",
+        "Curzate M-8",
+        "Sectin",
+        "Revus",
+        "Equation Pro"
+      ]
+    }
+  }
+}
