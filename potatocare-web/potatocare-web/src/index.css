@@ -1,0 +1,13 @@
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; }
+input, select { font-family: inherit; }
+@keyframes pc-spin { to { transform: rotate(360deg); } }
+.pc-touch:active:not(:disabled) { opacity: var(--pc-active-opacity, 0.7); }
+.pc-touch:focus-visible { outline: 2px solid #6C63FF; outline-offset: 2px; }

@@ -61,45 +61,32 @@ if os.path.getsize(MODEL_PATH) == 0:
 # -------------------------------
 logger.info("Loading disease model (TFLite)...")
 
-INTERPRETER = Interpreter(model_path=MODEL_PATH)
-INTERPRETER.allocate_tensors()
-
-_raw_input_details = INTERPRETER.get_input_details()
-
-# The source Keras model was built with a fixed batch_shape of 32
-# (InputLayer batch_shape=[32, 256, 256, 3]), so the converted TFLite
-# graph expects a batch of exactly 32 images. Since we predict on one
-# image at a time, we try to resize the input tensor to batch size 1.
-#
-# IMPORTANT: if resize_tensor_input() succeeds but the following
-# allocate_tensors() then fails (because some downstream op, e.g. the
-# Flatten/Dense layers, has a shape baked in for batch=32), the
-# interpreter is left in a broken, partially-resized state where tensors
-# report as "unallocated" for every subsequent request. In that case we
-# must discard it and build a brand new interpreter at the model's
-# original fixed batch size, then pad each request up to that batch
-# instead of trying to resize.
-_input_index = _raw_input_details[0]["index"]
-_target_shape = [1] + list(_raw_input_details[0]["shape"][1:])
-
+# NOTE: V1.tflite was exported with a fixed batch of 32. It has been patched so
+# its Reshape op infers the batch dimension (-1) instead of a hard-coded 32.
+# Two things keep memory low (~66 MB instead of ~400+ MB, which caused the
+# OOM crash loop on deploy):
+#   1. resize the input to batch 1 BEFORE the first allocate_tensors();
+#   2. disable the default XNNPACK delegate, which prepares the original
+#      batch-32 graph and allocates its workspace regardless of the resize.
+# Latency is ~25 ms/request on CPU, outputs identical to the original model.
+_interp_kwargs = {"num_threads": int(os.getenv("TFLITE_THREADS", "1"))}
 try:
-    INTERPRETER.resize_tensor_input(_input_index, _target_shape)
-    INTERPRETER.allocate_tensors()
-    logger.info("Resized TFLite input tensor to batch size 1: %s", _target_shape)
-except Exception as resize_error:
-    logger.warning(
-        "Could not resize input tensor to batch 1 (%s). "
-        "Rebuilding interpreter at the model's original fixed batch size "
-        "and padding each request instead.",
-        resize_error,
+    from ai_edge_litert.interpreter import OpResolverType  # type: ignore
+    _interp_kwargs["experimental_op_resolver_type"] = (
+        OpResolverType.BUILTIN_WITHOUT_DEFAULT_DELEGATES
     )
-    # The interpreter above may now be in a broken state -- don't reuse it.
-    INTERPRETER = Interpreter(model_path=MODEL_PATH)
-    INTERPRETER.allocate_tensors()
+except ImportError:
+    pass
+
+INTERPRETER = Interpreter(model_path=MODEL_PATH, **_interp_kwargs)
+_in = INTERPRETER.get_input_details()[0]
+INTERPRETER.resize_tensor_input(_in["index"], [1] + [int(d) for d in _in["shape"][1:]])
+INTERPRETER.allocate_tensors()
+logger.info("TFLite input resized to batch 1")
 
 INPUT_DETAILS = INTERPRETER.get_input_details()
 OUTPUT_DETAILS = INTERPRETER.get_output_details()
-FIXED_BATCH_SIZE = INPUT_DETAILS[0]["shape"][0]  # 1 if resize succeeded, else 32
+FIXED_BATCH_SIZE = INPUT_DETAILS[0]["shape"][0]  # always 1 now
 
 # TFLite interpreters are NOT thread-safe. FastAPI can process requests
 # concurrently, so without this lock, two overlapping requests can corrupt

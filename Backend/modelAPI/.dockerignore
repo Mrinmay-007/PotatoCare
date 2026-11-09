@@ -1,6 +1,9 @@
 __pycache__
 *.pyc
 .venv
+venv
 .git
 .env
+.fastapicloud
 node_modules
+*.ipynb

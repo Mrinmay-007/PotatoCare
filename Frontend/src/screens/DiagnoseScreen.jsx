@@ -19,7 +19,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import useTranslate from "../hooks/useTranslate";
 import styles from "../styles/DiagnoseStyle";
 
-const BASE_URL = "https://server2-production-ce4d.up.railway.app";
+const BASE_URL = "https://modelapi.fastapicloud.dev";
 const INSIGHTS_BASE_URL = "https://server-511b3f14.fastapicloud.dev";
 
 // Minimum confidence required to accept the /detect/ result as "this is a potato leaf"
