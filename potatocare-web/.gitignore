@@ -2,3 +2,4 @@ node_modules/
 dist/
 .env
 .env.local
+BUGS_AND_OPTIMIZATIONS.md
